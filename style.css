@@ -1,0 +1,10 @@
+https://api.mapbox.com/styles/v1/rajsoni2004/cl9cm4981001w15r176kwtcui.html?title=view&access_token=pk.eyJ1IjoicmFqc29uaTIwMDQiLCJhIjoiY2w4ZGRlMjkwMHZrOTNubXJ2OGIxZW14aiJ9.67W53zZBqRsC5Hc5Qw9tuw&zoomwheel=true&fresh=true#15.3/19.101719/73.007217
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+#map {
+  height: 100vh;
+  width: 100vw;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+    type="text/css"
+  />
+  <title> RADAR Map Interface </title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    #map {
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id='map' > :Developed by RADAR  </div>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoicmFqc29uaTIwMDQiLCJhIjoiY2w4ZGRlMjkwMHZrOTNubXJ2OGIxZW14aiJ9.67W53zZBqRsC5Hc5Qw9tuw';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+  });
+  center: [-87.661557, 41.893748],
+  zoom: 10.7
+ 
+map.on('click', (event) => {
+const features = map.queryRenderedFeatures(event.point, {
+layers: ['chicago-parks']
+});
+  if (!features.length) {
+return;
+}
+const feature = features[0];
+ 
+const popup = new mapboxgl.Popup({ offset: [0, -15] })
+.setLngLat(feature.geometry.coordinates)
+.setHTML(
+`<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+)
+.addTo(map);
+});
+</script>
+</body>
+</html>
